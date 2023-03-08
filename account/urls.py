@@ -1,7 +1,7 @@
 from django.urls import path
-from .views import NewsFeedView
+from .views import GetNewsFeedView, PostNewsFeedView
 
 urlpatterns = [
-    path('newsfeed/get', NewsFeedView.as_view({"get": "get request"})),
-    path('newsfeed/post', NewsFeedView.as_view({"post": "post request"})),
+    path('newsfeed/get', GetNewsFeedView.as_view()),
+    path('newsfeed/post', PostNewsFeedView.as_view()),
 ]
