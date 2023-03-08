@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-#d-e15*1z0olc0q@v)(f*b2gab2$8+t(ndeg0@g&zif()y&j27
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['djangoimageuploader-production.up.railway.app']
 
 
 # Application definition
