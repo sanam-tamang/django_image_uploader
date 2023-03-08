@@ -5,6 +5,7 @@ from .serializers import NewsFeedSerializer
 from .models import NewsFeed
 from rest_framework import status
 
+
 class PostNewsFeedView(APIView):
 
     def post(self,request):
@@ -20,5 +21,22 @@ class GetNewsFeedView(APIView):
         data = NewsFeed.objects.all()
         serializer = NewsFeedSerializer(data, many = True)
         return Response(serializer.data)
+
+
+
+
+from django.http import HttpResponse, HttpResponseNotFound
+from rest_framework.views import APIView
+from rest_framework.response import Response
+
+class NewsFeedImageView(APIView):
+    def get(self, request, filename):
+        try:
+            newsfeed = NewsFeed.objects.get(image=filename)
+        except NewsFeed.DoesNotExist:
+            return HttpResponseNotFound()
+        
+        image_data = open(newsfeed.image.path, "rb").read()
+        return HttpResponse(image_data, content_type="image/jpeg")
 
    
